@@ -13,7 +13,6 @@ get_vim_dir() {
 if [[ -f "$(get_vim_dir)/vimrc" ]]; then
     alias vim="vim \
         -c 'set runtimepath=$(get_vim_dir),\$VIMRUNTIME' \
-        -c 'source $(get_vim_dir)/bundle/pathogen/autoload/pathogen.vim' \
         -c 'source $(get_vim_dir)/vimrc'"
     export EDITOR=vim
 else
