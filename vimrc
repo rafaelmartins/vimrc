@@ -36,6 +36,14 @@ set autoindent
 set list
 set listchars=tab:\ ¬,trail:.
 
+" Make syntastic auto update the location list and make it also check
+" when the file opens
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_check_on_open=1
+
+" Airline
+let g:airline_powerline_fonts=0
+
 " The PC is fast enough, do syntax highlight syncing from start
 autocmd BufEnter * :syntax sync fromstart
 
@@ -47,11 +55,9 @@ filetype plugin indent on
 
 " activate a permanent ruler and disable Toolbar, and add line
 " highlightng as well as numbers.
-" And disable the sucking pydoc preview window for the omni completion
 " also highlight current line and disable the blinking cursor.
 set ruler
 set guioptions-=T
-set completeopt-=preview
 set gcr=a:blinkon0
 set ttyfast
 
@@ -63,10 +69,7 @@ set wildmode=list:full
 " autoread
 set autoread
 
-" Make the command line two lines high and change the statusline display to
-" something that looks useful.
-set cmdheight=1
-set laststatus=2
+" Change the statusline display to something that looks useful.
 set statusline=[%l,%v\ %P%M]\ %f\ %r%h%w\ (%{&ff})\ %{fugitive#statusline()}
 set showcmd
 
@@ -92,3 +95,18 @@ if version >= 703
   autocmd FileType ruby,python,javascript,c,cpp,objc,rst
     \ let &colorcolumn="80,".join(range(84,300),",")
 endif
+
+" python support
+" --------------
+" don't highlight exceptions and builtins. I love to override them in local
+" scopes and it sucks ass if it's highlighted then. And for exceptions I
+" don't really want to have different colors for my own exceptions ;-)
+autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8
+  \ formatoptions=croqj softtabstop=4 textwidth=74 comments=:#\:,:#
+let python_highlight_all=1
+let python_highlight_exceptions=0
+let python_highlight_builtins=0
+let python_slow_sync=1
+
+let g:syntastic_python_checkers=['flake8', 'python']
+
