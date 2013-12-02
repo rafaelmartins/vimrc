@@ -10,12 +10,16 @@ get_vim_dir() {
     popd &> /dev/null
 }
 
+get_system_vimrc() {
+    local vimrc="$(vim --version | grep "system vimrc" | cut -d':' -f2)"
+    echo "${vimrc//\"}"
+}
+
 if [[ -f "$(get_vim_dir)/vimrc" ]]; then
-    alias vim="vim \
-        -c 'set runtimepath=$(get_vim_dir),\$VIMRUNTIME' \
-        -c 'source $(get_vim_dir)/bundle/pathogen/autoload/pathogen.vim' \
-        -c 'source $(get_vim_dir)/vimrc'"
+    alias vim="vim -u '$(get_vim_dir)/vimrc'"
     export EDITOR=vim
+    export SYSTEM_VIMRC="$(get_system_vimrc)"
+    export MY_VIM_DIR="$(get_vim_dir)"
 else
     echo "Invalid vim setup." >2
 fi
