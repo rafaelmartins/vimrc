@@ -69,7 +69,9 @@ set wildmode=list:full
 " autoread
 set autoread
 
-" Change the statusline display to something that looks useful.
+" Make the command line two lines high and change the statusline display to
+" something that looks useful.
+set laststatus=2
 set statusline=[%l,%v\ %P%M]\ %f\ %r%h%w\ (%{&ff})\ %{fugitive#statusline()}
 set showcmd
 
