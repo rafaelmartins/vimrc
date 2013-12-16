@@ -30,6 +30,7 @@ set sw=4
 set ts=4
 set sts=4
 set smarttab
+set expandtab
 set autoindent
 
 " Display tabs and trailing spaces
