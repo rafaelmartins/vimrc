@@ -1,4 +1,4 @@
-" rafaelmartins' vimrc.
+﻿" rafaelmartins' vimrc.
 
 " Some ugly hacks to initialize vim using our custom stuff
 source $SYSTEM_VIMRC
