@@ -112,4 +112,4 @@ let python_highlight_builtins=0
 let python_slow_sync=1
 
 let g:syntastic_python_checkers=['flake8', 'python']
-
+let g:syntastic_c_checkers=['make']
