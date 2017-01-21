@@ -21,5 +21,5 @@ if [[ -f "$(get_vim_dir)/vimrc" ]]; then
     export SYSTEM_VIMRC="$(get_system_vimrc)"
     export MY_VIM_DIR="$(get_vim_dir)"
 else
-    echo "Invalid vim setup." >2
+    echo "Invalid vim setup."
 fi
