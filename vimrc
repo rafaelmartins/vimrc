@@ -10,6 +10,7 @@ call pathogen#helptags()
 
 " Enable 256 colors for terminal and set colorscheme
 set t_Co=256
+set t_ut=
 colorscheme jellybeans
 
 " Disable vi compatibility
