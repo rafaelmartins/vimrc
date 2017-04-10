@@ -1,4 +1,4 @@
-﻿" rafaelmartins' vimrc.
+" rafaelmartins' vimrc.
 
 " Some ugly hacks to initialize vim using our custom stuff
 source $SYSTEM_VIMRC
@@ -39,12 +39,28 @@ set list
 set listchars=tab:\ ¬,trail:.
 
 " Make syntastic auto update the location list and make it also check
-" when the file opens
+" when the file opens and not when wq
 let g:syntastic_always_populate_loc_list=1
+let g:syntastic_auto_loc_list=1
 let g:syntastic_check_on_open=1
+let g:syntastic_check_on_wq = 0
+
+" Make syntastic run make in parallel
+if filereadable('/proc/cpuinfo')
+  let g:syntastic_c_make_post_args='-j'.(system('grep -c ^processor /proc/cpuinfo') + 1)
+endif
+
+" Set syntastic checkers
+let g:syntastic_python_checkers=['flake8', 'python']
+let g:syntastic_c_checkers=['make']
 
 " Airline
 let g:airline_powerline_fonts=0
+let g:airline_symbols_ascii=1
+let g:airline_left_sep='>'
+let g:airline_left_alt_sep='>'
+let g:airline_right_sep='<'
+let g:airline_right_alt_sep='<'
 
 " The PC is fast enough, do syntax highlight syncing from start
 autocmd BufEnter * :syntax sync fromstart
@@ -111,6 +127,3 @@ let python_highlight_all=1
 let python_highlight_exceptions=0
 let python_highlight_builtins=0
 let python_slow_sync=1
-
-let g:syntastic_python_checkers=['flake8', 'python']
-let g:syntastic_c_checkers=['make']
