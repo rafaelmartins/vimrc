@@ -8,6 +8,9 @@ execute "source ".$MY_VIM_DIR."/bundle/pathogen/autoload/pathogen.vim"
 call pathogen#infect($MY_VIM_DIR."/bundle/{}")
 call pathogen#helptags()
 
+" utf-8 default encoding
+set enc=utf-8
+
 " Enable 256 colors for terminal and set colorscheme
 set t_Co=256
 set t_ut=
@@ -92,9 +95,6 @@ set autoread
 set laststatus=2
 set statusline=[%l,%v\ %P%M]\ %f\ %r%h%w\ (%{&ff})\ %{fugitive#statusline()}
 set showcmd
-
-" utf-8 default encoding
-set enc=utf-8
 
 " prefer unix over windows over os9 formats
 set fileformats=unix,dos,mac
